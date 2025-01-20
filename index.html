@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Saviour App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.js"></script>
+</head>
+<body>
+  <div id="loader">
+    <div class="loading-text">Soil Saviour is Loading...</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <div class="progress-text" id="progress-text">[||||      ]</div>
+  </div>
+  
+  <header>
+    <h1>Soil Saviour</h1>
+    <p>Your Smart Farming Companion</p>
+    <select id="languageSelector" onchange="switchLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="ta">தமிழ்</option>
+    </select>
+  </header>
+
+  <div class="navbar">
+    <a href="#" onclick="showSection('home'); event.preventDefault()" id="homeLink">Home</a>
+    <a href="#" onclick="showSection('soilAnalysis'); event.preventDefault()" id="soilAnalysisLink">Soil Analysis</a>
+    <a href="#" onclick="showSection('community'); event.preventDefault()" id="communityLink">Community</a>
+    <a href="#" onclick="showSection('marketplace'); event.preventDefault()" id="marketplaceLink">Marketplace</a>
+    <input type="text" id="searchBar" placeholder="Search..." oninput="performSearch()" />
+  </div>
+
+  <div class="container">
+    <div id="home" class="section active">
+      <h2 id="welcome">Welcome to Soil Saviour</h2>
+      <p id="slogan">Discover smart solutions for farming and soil management.</p>
+      <img src="https://th.bing.com/th/id/OIP.FqSIxt26fCHsuVgIRmrx5AAAAA?rs=1&pid=ImgDetMain" alt="Smart Farming" style="width: 600px; height: auto;">
+      <br>
+      <label id ="Name1" for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <label id ="Email1" for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <button onclick="alert('Details saved!')">Save Details</button>
+
+      <button class="next-btn" onclick="showSection('soilAnalysis')">Next</button>
+    </div>
+
+    <div id="soilAnalysis" class="section">
+      <h2 id="soilAnalysisTitle">Soil Analysis</h2>
+      <p id="uploadSoilText">Upload a soil image to get suggestions:</p>
+      <input type="file" id="soilImage" accept="image/*">
+      <button onclick="analyzeSoil()" id="analyzeSoilBtn">Analyze Soil</button>
+      <p id="analysisResult"></p>
+      <img src="https://www.agrivi.com/wp-content/uploads/2017/01/Blog-Soil-Analysis-1200x565.jpg" alt="Soil Analysis" style="width:600px; height:auto;">
+
+      <button class="next-btn" onclick="showSection('community')">Next</button>
+    </div>
+
+    <div id="community" class="section">
+      <h2 id="communityTitle">Community</h2>
+      <p id="communityCaption">Share your farming experience with others:</p>
+      <textarea id="experience" rows="5" placeholder="Write your experience here..."></textarea>
+      <button onclick="submitExperience()">Submit</button>
+      <p id="communityMessage"></p>
+
+      <div class="cta">
+        <button onclick="alert('Join the community today!')">Join the Community</button>
+      </div>
+
+      <button class="next-btn" onclick="showSection('marketplace')">Next</button>
+    </div>
+
+    <div id="marketplace" class="section">
+      <h2 id="marketplaceTitle">Marketplace</h2>
+      <p id="marketplacecaption">Buy and sell products from the marketplace:</p>
+      <h3 id="availableproducts">Available Products:</h3>
+      <div class="categories">
+        <h3 id="sellproducts">Sell Your Products</h3>
+        <form id="sellForm">
+          <label id ="productNAME" for="productName">Product Name:</label>
+          <input type="text" id="productName3" placeholder="Enter product name" required>
+          <label id ="productCategorY" for="productCategory">Category:</label>
+          <select id="productCategory">
+            <option value="Seeds">Seeds</option>
+            <option value="Fertilizers">Fertilizers</option>
+            <option value="Machinery">Machinery</option>
+          </select>
+          <label id ="Price" for="productPrice">Price:</label>
+          <input type="number" id="productPrice" placeholder="Enter price" required>
+          <button type="button" onclick="uploadProduct()">Upload Product</button>
+        </form>
+        <p id="uploadMessage"></p>
+      </div>
+
+      <div class="marketplace-content">
+        <button onclick="alert('Feature Coming Soon!')">Buy Products</button>
+        <button onclick="alert('Feature Coming Soon!')">Sell Products</button>
+      </div>
+
+      <button class="next-btn" onclick="alert('You have reached the end!')">Finish</button>
+    </div>
+  </div>
+
+  <footer>
+    <div>&copy; 2025 Soil Saviour. All rights reserved.</div>
+    <div>Follow us on
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
