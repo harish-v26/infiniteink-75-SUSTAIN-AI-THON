@@ -50,14 +50,43 @@
     </div>
 
     <div id="soilAnalysis" class="section">
-      <h2 id="soilAnalysisTitle">Soil Analysis</h2>
-      <p id="uploadSoilText">Upload a soil image to get suggestions:</p>
-      <input type="file" id="soilImage" accept="image/*">
-      <button onclick="analyzeSoil()" id="analyzeSoilBtn">Analyze Soil</button>
-      <p id="analysisResult"></p>
-      <img src="https://www.agrivi.com/wp-content/uploads/2017/01/Blog-Soil-Analysis-1200x565.jpg" alt="Soil Analysis" style="width:600px; height:auto;">
-
-      <button class="next-btn" onclick="showSection('community')">Next</button>
+        <h2 id="soilAnalysisTitle">Soil Analysis</h2>
+        <p id="uploadSoilText">Answer the following questions to analyze your soil:</p>
+        <form id="soilForm">
+          <label for="soil-color">What is the color of the soil?</label>
+          <select id="soil-color" name="soil-color" required>
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="brown">Brown</option>
+            <option value="gray">Gray</option>
+          </select>
+  
+          <label for="soil-appearance">How does the soil appear?</label>
+          <select id="soil-appearance" name="soil-appearance" required>
+            <option value="loose">Loose and sandy</option>
+            <option value="sticky">Sticky and clay-like</option>
+            <option value="crumbly">Crumbly and soft</option>
+            <option value="dry">Dry and powdery</option>
+            <option value="wet">Wet and heavy</option>
+          </select>
+  
+          <button type="button" id="analyzeBtn">Analyze Soil</button>
+        </form>
+  
+        <div id="loading">
+          <h3>Analyzing Soil...</h3>
+          <div class="loader">
+            <div class="bar"></div>
+          </div>
+        </div>
+  
+        <div id="output">
+          <h2>Soil Analysis Result</h2>
+          <p id="result"></p>
+        </div>
+  
+        <button class="next-btn" onclick="showSection('community')">Next</button>
     </div>
 
     <div id="community" class="section">
@@ -114,6 +143,7 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
